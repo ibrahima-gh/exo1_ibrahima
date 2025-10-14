@@ -1,9 +1,0 @@
-# ToDoList CLI - Dépendances Python
-# Aucune dépendance externe requise - utilise uniquement la bibliothèque standard Python
-
-# Recommandations pour le développement:
-# pytest>=7.4.0  # Pour les tests unitaires
-# black>=23.0.0  # Pour le formatage du code
-# pylint>=2.17.0  # Pour l'analyse statique du code
-# mypy>=1.4.0  # Pour la vérification des types
-
