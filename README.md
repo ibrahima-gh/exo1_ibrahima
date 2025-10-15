@@ -1,49 +1,58 @@
-# 📝 ToDoList CLI
+# 📝 ToDoList Flask API
 
-Application CLI pour gérer des tâches en Python avec architecture MVC.
+API REST Flask pour gérer des tâches.
 
 ## 🚀 Installation
 
 ```bash
-# Créer un environnement virtuel
-python3 -m venv venv
-source venv/bin/activate  # Linux/Mac
-# ou venv\Scripts\activate  # Windows
-
-# Installer les dépendances
-pip install -r requirements.txt
+pip install Flask
 ```
 
 ## 🎯 Utilisation
 
 ```bash
-python3 main.py
+python3 app.py
 ```
 
-## 📋 Fonctionnalités
+API disponible sur : **http://localhost:8000**
 
-1. Ajouter une tâche
-2. Lister les tâches  
-3. Supprimer une tâche
+## 📋 Routes API
 
-## 🏗️ Architecture MVC
+| Méthode | Route | Description |
+|---------|-------|-------------|
+| `GET` | `/` | Statut de l'API |
+| `GET` | `/tasks` | Lister toutes les tâches |
+| `POST` | `/tasks` | Créer une tâche |
+| `GET` | `/tasks/<id>` | Récupérer une tâche |
+| `PUT` | `/tasks/<id>` | Modifier une tâche |
+| `DELETE` | `/tasks/<id>` | Supprimer une tâche |
 
-- **Models** : Task, TaskManager
-- **Views** : CLIView
-- **Controllers** : TaskController
+## 💻 Exemples
 
-## 💻 API
-
-```python
-from controllers.task_controller import TaskController
-
-controller = TaskController()
-task = controller.create_task("Ma tâche", "Description")
-controller.delete_task(1)
+### Lister les tâches
+```bash
+curl http://localhost:8000/tasks
 ```
 
-## 📦 Dépendances
+### Créer une tâche
+```bash
+curl -X POST http://localhost:8000/tasks \
+     -H "Content-Type: application/json" \
+     -d '{"title": "Ma tâche"}'
+```
 
-- **click** : Gestion des arguments CLI
-- **rich** : Affichage coloré et formaté
-- **colorama** : Couleurs cross-platform
+### Modifier une tâche
+```bash
+curl -X PUT http://localhost:8000/tasks/1 \
+     -H "Content-Type: application/json" \
+     -d '{"title": "Nouveau titre"}'
+```
+
+### Supprimer une tâche
+```bash
+curl -X DELETE http://localhost:8000/tasks/1
+```
+
+## ⚠️ Note
+
+Données en mémoire (redémarrage = perte des données)
